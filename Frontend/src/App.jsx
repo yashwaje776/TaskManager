@@ -23,11 +23,11 @@ const App = () => {
         } p-4`}
       >
         <Routes>
+          <Route path="/sign" element={<LoginSignupForm />} />
           <Route
-            path="/sign"
-            element={token ? <Navigate to="/" /> : <LoginSignupForm />}
+            path="/"
+            element={token ? <Home></Home> : <LoginSignupForm />}
           />
-          <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/add-task" element={<AddTask />} />
           <Route path="*" element={<Navigate to={token ? "/" : "/sign"} />} />

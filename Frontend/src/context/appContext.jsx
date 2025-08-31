@@ -11,7 +11,6 @@ export const AppContextProvider = ({ children }) => {
   const [tasks, settasks] = useState([]);
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
-  console.log(backendUrl)
   const getTasks = async () => {
     try {
       const { data } = await axios.get(`${backendUrl}/api/tasks/get`, {
@@ -19,7 +18,6 @@ const backendUrl = import.meta.env.VITE_BACKEND_URL;
       });
       if (data.success) {
         settasks(data.tasks);
-        console.log(data.tasks)
       }
 
     } catch (error) {
