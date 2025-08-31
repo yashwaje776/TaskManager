@@ -9,9 +9,9 @@ export const AppContextProvider = ({ children }) => {
   const [token, settoken] = useState(localStorage.getItem("token") || "");
   const [userData, setuserData] = useState(null);
   const [tasks, settasks] = useState([]);
-  const backendUrl = "http://localhost:3000";
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
-
+  console.log(backendUrl)
   const getTasks = async () => {
     try {
       const { data } = await axios.get(`${backendUrl}/api/tasks/get`, {
