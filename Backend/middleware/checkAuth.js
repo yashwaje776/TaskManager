@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 export const check = async (req, res, next) => {
   try {
     const { token } = req.headers;
-    console.log(token);
     if (!token) {
       return res
         .status(401)
