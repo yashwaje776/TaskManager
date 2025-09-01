@@ -90,7 +90,7 @@ const Home = () => {
         </div>
         {display && (
           <div className="flex gap-4 mb-8" aria-label="Task filters">
-            {["1", "2", "3", "4", "5"].map((status) => {
+            {["low", "medium", "high"].map((status) => {
               const isActive = priority === status;
               return (
                 <button

@@ -11,7 +11,7 @@ const AddTask = () => {
   const [dueTime, setDueTime] = useState("");
   const [loading, setLoading] = useState(false);
   const { backendUrl, token, navigate, settasks } = useContext(appContext);
-  const [priority, setpriority] = useState("1");
+  const [priority, setpriority] = useState("low");
   const date = new Date().toISOString().split("T")[0];
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -128,11 +128,9 @@ const AddTask = () => {
             onChange={(e) => setpriority(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2 mb-8 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
           </select>
 
           <button

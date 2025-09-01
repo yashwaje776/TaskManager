@@ -121,7 +121,26 @@ export const EditTasks = async (req, res) => {
   try {
     const userId = req.userId;
     const { taskId } = req.params;
-    const { title, description, dueDate, dueTime } = req.body;
+    const { title, description, dueDate, dueTime, priority, status } = req.body;
+
+    const updatedTask = await Task.findOneAndUpdate(
+      { _id: taskId, user: userId },
+      { title, description, dueDate, dueTime, priority, status },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({
+        success: false,
+        message: "Task not found or you don't have permission to edit it",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Task updated successfully",
+      task: updatedTask,
+    });
   } catch (error) {
     console.error("Error updating task:", error);
     return res.status(500).json({

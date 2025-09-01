@@ -5,6 +5,7 @@ import {
   getTasks,
   deleteTask,
   markTaskCompleted,
+  EditTasks,
 } from "../controllers/task.contollers.js";
 
 export const TaskRouter = express.Router();
@@ -15,3 +16,4 @@ TaskRouter.get("/get", check, getTasks);
 TaskRouter.delete("/delete/:taskId", check, deleteTask);
 
 TaskRouter.patch("/complete/:taskId", check, markTaskCompleted);
+TaskRouter.put("/edit/:taskId", check, EditTasks);
